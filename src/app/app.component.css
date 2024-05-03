@@ -1,0 +1,16 @@
+body,
+html {
+    background-color: green;
+
+}
+
+.sidebar-menu {
+    position: fixed;
+    display: flex;
+    width: 25%;
+    height: 100vh;
+}
+
+.test {
+    transition: margin-left 0.5s ease;
+}
