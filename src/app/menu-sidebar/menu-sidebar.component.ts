@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { SidebarService } from '../service/sidebar.service';
 @Component({
   selector: 'app-menu-sidebar',
@@ -6,27 +6,38 @@ import { SidebarService } from '../service/sidebar.service';
   styleUrls: ['./menu-sidebar.component.css'],
 })
 export class MenuSidebarComponent {
-  @ViewChild('websiteName') websiteNameRef!: ElementRef;
   constructor(public sidebarService: SidebarService) {}
-  isDisable = true;
-  isIconVisible = true;
+  isMobileView: boolean = true;
+  isMenuVisible: boolean = true;
+  isIconLeft: boolean = true;
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkIfMobile();
+  }
+  ngOnInit() {
+    this.checkIfMobile();
+  }
+
+  isIconVisible: boolean = true;
   toggleMenu(): void {
-    this.sidebarService.toggleSidebar();
-    // this.isDisable = !this.isDisable;
-    this.isIconVisible = false;
-    if (this.isDisable) {
+    this.isIconLeft = !this.isIconLeft;
+    this.isMenuVisible = !this.isMenuVisible;
+    this.isIconVisible = !this.isIconVisible;
+    this.sidebarService.toggle();
+    if (this.isIconLeft) {
       setTimeout(() => {
         this.isIconVisible = true;
-      }, 200);
-      this.isIconVisible = false; // Hide the double left icon when resizing to 100%
+      }, 140);
+      this.isIconVisible = false;
     }
   }
-  ngAfterViewInit() {
-    // Sau khi tất cả các phần tử con đã được render, bạn có thể đo kích thước của phần tử websiteName
-    const websiteNameHeight = this.websiteNameRef.nativeElement.offsetHeight;
-    const otherElement = document.getElementById('resized');
-    if (otherElement) {
-      otherElement.style.height = websiteNameHeight + 'px';
+
+  checkIfMobile() {
+    this.isMobileView = window.innerWidth <= 375; // Assume 768px width is mobile
+    if (this.isMobileView) {
+      this.isMenuVisible = false;
+      this.isIconLeft = false;
+    } else {
     }
   }
 }

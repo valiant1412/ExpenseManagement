@@ -1,74 +1,11 @@
-<div class="container sidebar-menu m-0" [ngStyle]="{ 'width.%': !(sidebarService.isCollapsed$ | async) ? 100 : 20 }">
-    <div class="row mb-4 logo d-flex align-items-center" *ngIf="!(sidebarService.isCollapsed$ | async)">
-        <div class="col-md-10 website-name px-4" #websiteName>
-            <p>Money Management</p>
-        </div>
-        <div *ngIf="isIconVisible" class="col-md-1 d-flex align-items-center resizeSmall">
-            <i class="bi bi-chevron-double-left" (click)="toggleMenu()" style="font-size:clamp(10px,30px,35px)"></i>
-        </div>
-
-    </div>
-
-    <div id="resized" class="row mb-4 logo d-flex align-items-center justify-content-center"
-        *ngIf="(sidebarService.isCollapsed$ | async)">
-        <!-- <div class="website-name" style="visibility: hidden;width:0">
-            <p>Money Management</p>
-        </div> -->
-        <div class="col-md-1 d-flex align-items-center justify-content-center ">
-            <i class="bi bi-x-lg resize100" (click)="toggleMenu()"
-                style="font-size:clamp(20px,30px,40px); cursor:pointer;"></i>
-        </div>
-    </div>
-
-    <div class="row d-flex justify-content-center">
-        <div class="row mb-2 menu-item p-3">
-            <div class="d-flex justify-content-center align-items-center col-md-2">
-                <i class="bi bi-house"></i>
-            </div>
-            <div class="col-md-10" *ngIf="!(sidebarService.isCollapsed$ | async)">
-                <div *ngIf="isIconVisible">Trang chủ</div>
-
-            </div>
-        </div>
-        <div class="row mb-2 menu-item p-3">
-            <div class="d-flex justify-content-center align-items-center col-md-2">
-                <i class="bi bi-file-earmark"></i>
-            </div>
-            <div class="col-md-10" *ngIf="!(sidebarService.isCollapsed$ | async)">
-                <div *ngIf="isIconVisible">Bản ghi</div>
-            </div>
-        </div>
-        <div class="row mb-2 menu-item p-3">
-            <div class="d-flex justify-content-center align-items-center col-md-2">
-                <i class="bi bi-bar-chart-line"></i>
-            </div>
-            <div class="col-md-10" *ngIf="!(sidebarService.isCollapsed$ | async)">
-                <div *ngIf="isIconVisible">Báo cáo</div>
-            </div>
-        </div>
-        <div class="row mb-2 menu-item p-3">
-            <div class="d-flex justify-content-center align-items-center col-md-2">
-                <i class="bi bi-gear"></i>
-            </div>
-            <div class="col-md-10" *ngIf="!(sidebarService.isCollapsed$ | async)">
-                <div *ngIf="isIconVisible">Cài đặt</div>
-            </div>
-        </div>
-        <div class="row mb-2 menu-item p-3">
-            <div class="d-flex justify-content-center align-items-center col-md-2">
-                <i class="bi bi-person-circle"></i>
-            </div>
-            <div class="col-md-10" *ngIf="!(sidebarService.isCollapsed$ | async)">
-                <div *ngIf="isIconVisible">Tài khoản</div>
-            </div>
-        </div>
-
-        <div class="row mb-2 menu-item p-3">
-            <div class="d-flex justify-content-center align-items-center col-md-2">
-                <i class="bi bi-box-arrow-right"></i>
-            </div>
-            <div class="col-md-10" *ngIf="!(sidebarService.isCollapsed$ | async)">
-                <div *ngIf="isIconVisible">Đăng xuất</div>
+<div id="sidebar-menu" class="shadow shadow-lg grid grid-rows-2 rounded-t-lg"
+    [ngClass]="isMenuVisible?'expand':'minimize'">
+    <div class="w-full sidebar-menu-container">
+        <div class=" rounded-t-lg shadow shadow-md h-20 flex flex-row justify-center align-center bg-white">
+            <div class="w-4/5 flex flex-row items-center" [ngClass]="!isIconLeft?'justify-center':'justify-between'">
+                <div class="text-2xl" *ngIf="isMenuVisible">Money Mangement</div>
+                <i class="bi bi-caret-left-fill" (click)="toggleMenu()"
+                    [ngClass]="isIconLeft?'expandMenu':'resizeSmall'"></i>
             </div>
         </div>
     </div>
