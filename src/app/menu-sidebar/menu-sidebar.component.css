@@ -1,9 +1,11 @@
 #sidebar-menu {
     position: fixed;
     height: 100vh;
-    border-radius: 10px;
-    border: 1px solid green;
-    transition: width 0.5s ease;
+}
+
+.logo {
+    width: 100%;
+
 }
 
 .expand {
@@ -11,49 +13,37 @@
 }
 
 .minimize {
-    width: 5%;
+    width: 10%;
 }
 
-.sidebar-menu-container {
-    height: 100%;
+.main-menu {
+    height: 100vh;
+    background-color: white;
 }
 
-.resizeSmall {
-    transform: rotate(-180deg);
-    transition: transform 0.5s ease-out;
-
+.toggle-menu-btn {
+    background-color: white;
+    border-radius: 5px;
 }
 
-.expandMenu {
-    transition: transform 0.5s ease-out;
+.expand-btn {
+    rotate: 180deg;
 }
-
-
 
 @media screen and (max-width:375px) {
     .expand {
-        width: 50%;
-    }
-
-    .sidebar-menu-container {
-        height: fit-content;
+        width: 70%;
     }
 
     .text-2xl {
-        font-size: 1rem;
-    }
-}
-
-@media screen and (min-width:376px) and (max-width:876px) {
-    .expand {
-        width: 40%;
+        font-size: 1.25rem;
     }
 
-    .sidebar-menu-container {
-        height: fit-content;
+    .text-sm {
+        font-size: 0.875rem;
     }
 
-    .text-2xl {
-        font-size: 1rem;
+    .hidden {
+        display: none !important;
     }
 }

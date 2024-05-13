@@ -2,5 +2,6 @@
 
 <app-menu-sidebar></app-menu-sidebar>
 
-<!-- <h2 class="test" [ngClass]="!sidebarService.toggle()?'margin30':'margin15'">Hello World</h2> -->
-<app-homepage></app-homepage>
+<div class="test" [ngClass]="sidebarService.toggle()?'margin30':'margin15'">
+    <app-homepage></app-homepage>
+</div>

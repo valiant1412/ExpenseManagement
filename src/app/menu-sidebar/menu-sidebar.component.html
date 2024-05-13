@@ -1,12 +1,57 @@
-<div id="sidebar-menu" class="shadow shadow-lg grid grid-rows-2 rounded-t-lg"
-    [ngClass]="isMenuVisible?'expand':'minimize'">
-    <div class="w-full sidebar-menu-container">
-        <div class=" rounded-t-lg shadow shadow-md h-20 flex flex-row justify-center align-center bg-white">
-            <div class="w-4/5 flex flex-row items-center" [ngClass]="!isIconLeft?'justify-center':'justify-between'">
-                <div class="text-2xl" *ngIf="isMenuVisible">Money Mangement</div>
-                <i class="bi bi-caret-left-fill" (click)="toggleMenu()"
-                    [ngClass]="isIconLeft?'expandMenu':'resizeSmall'"></i>
+<div id="sidebar-menu" [ngClass]="isMenuVisible?'expand':'minimize'">
+    <div class="w-full sidebar-menu-container flex flex-row justify-between">
+        <div class="main-menu w-11/12 flex flex-col items-center" [ngClass]="{'hidden':!isIconLeft}">
+            <div class="w-full logo flex justify-center items-center shadow-lg text-2xl">
+                <div class="w-4/5" *ngIf="isIconLeft">Money Management</div>
+                <i class="bi bi-list" *ngIf="!isIconLeft"></i>
             </div>
+            <div class="w-full menu-list-items grid grid-rows-4 text-sm">
+                <a href="/"
+                    class="w-full flex flex-row justify-center py-3 hover:bg-sky-500 hover:shadow-3xl hover:text-white">
+                    <div class="w-4/5 flex flex-row items-center" [ngClass]="{'justify-center':!isIconLeft}">
+                        <i class="bi bi-house"></i>
+                        <div class="ml-4" *ngIf="isIconLeft">Trang chủ</div>
+                    </div>
+                </a>
+                <a href="/"
+                    class="w-full flex flex-row justify-center py-3 hover:bg-sky-500 hover:shadow-3xl hover:text-white">
+                    <div class="w-4/5 flex flex-row items-center" [ngClass]="{'justify-center':!isIconLeft}">
+                        <i class="bi bi-file-earmark"></i>
+                        <div class="ml-4" *ngIf="isIconLeft">Bản ghi</div>
+                    </div>
+                </a>
+                <a href="/"
+                    class="w-full flex flex-row justify-center py-3 hover:bg-sky-500 hover:shadow-3xl hover:text-white">
+                    <div class="w-4/5 flex flex-row items-center" [ngClass]="{'justify-center':!isIconLeft}">
+                        <i class="bi bi-bar-chart-line"></i>
+                        <div class="ml-4" *ngIf="isIconLeft">Báo cáo</div>
+                    </div>
+                </a>
+                <a href="/"
+                    class="w-full flex flex-row justify-center py-3 hover:bg-sky-500 hover:shadow-3xl hover:text-white">
+                    <div class="w-4/5 flex flex-row items-center" [ngClass]="{'justify-center':!isIconLeft}">
+                        <i class="bi bi-gear"></i>
+                        <div class="ml-4" *ngIf="isIconLeft">Cài đặt</div>
+                    </div>
+                </a>
+                <a href="/"
+                    class="w-full flex flex-row justify-center py-3 hover:bg-sky-500 hover:shadow-3xl hover:text-white">
+                    <div class="w-4/5 flex flex-row items-center" [ngClass]="{'justify-center':!isIconLeft}">
+                        <i class="bi bi-person-circle"></i>
+                        <div class="ml-4" *ngIf="isIconLeft">Tài khoản</div>
+                    </div>
+                </a>
+                <a href="/"
+                    class="w-full flex flex-row justify-center py-3 hover:bg-sky-500 hover:shadow-3xl hover:text-white">
+                    <div class="w-4/5 flex flex-row items-center" [ngClass]="{'justify-center':!isIconLeft}">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <div class="ml-4" *ngIf="isIconLeft">Đăng xuất</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="toggle-menu-btn h-fit flex items-center p-1 border-2" [ngClass]=" {'expand-btn':!isIconLeft}">
+            <i class="bi bi-caret-left-fill" (click)="toggleMenu()"></i>
         </div>
     </div>
 </div>
